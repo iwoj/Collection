@@ -1062,7 +1062,7 @@ class SpecialCollection extends SpecialPage {
 
 		$response = self::mwServeCommand( 'render', array(
 			'metabook' => $this->buildJSONCollection( $collection ),
-			'base_url' => wfExpandUrl( $wgScriptPath, PROTO_CURRENT ),
+			'base_url' => 'http://dev.wiki.clicklaw.bc.ca',
 			'script_extension' => $wgScriptExtension,
 			'template_blacklist' => $this->msg( 'coll-template_blacklist_title' )->inContentLanguage()->plain(),
 			'template_exclusion_category' => $this->msg( 'coll-exclusion_category_title' )->inContentLanguage()->plain(),
@@ -1097,7 +1097,7 @@ class SpecialCollection extends SpecialPage {
 
 		$response = self::mwServeCommand( 'render', array(
 			'collection_id' => $collectionID,
-			'base_url' => wfExpandUrl( $wgScriptPath, PROTO_CURRENT ),
+			'base_url' => 'http://dev.wiki.clicklaw.bc.ca',
 			'script_extension' => $wgScriptExtension,
 			'template_blacklist' => $this->msg( 'coll-template_blacklist_title' )->inContentLanguage()->plain(),
 			'template_exclusion_category' => $this->msg( 'coll-exclusion_category_title' )->inContentLanguage()->plain(),
@@ -1289,7 +1289,7 @@ class SpecialCollection extends SpecialPage {
 
 		$response = self::mwServeCommand( 'zip_post', array(
 			'metabook' => $this->buildJSONCollection( $collection ),
-			'base_url' => wfExpandUrl( $wgScriptPath, PROTO_CURRENT ),
+			'base_url' => 'http://dev.wiki.clicklaw.bc.ca',
 			'script_extension' => $wgScriptExtension,
 			'template_blacklist' => $this->msg( 'coll-template_blacklist_title' )->inContentLanguage()->plain(),
 			'template_exclusion_category' => $this->msg( 'coll-exclusion_category_title' )->inContentLanguage()->plain(),

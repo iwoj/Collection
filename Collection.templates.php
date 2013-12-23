@@ -117,9 +117,11 @@ foreach ( $this->data['podpartners'] as $partnerKey => $partnerData ) {
 			<?php } else { ?>
 				<label for="formatSelect"><?php $this->msg( 'coll-format_label' ) ?></label>
 				<select id="formatSelect" name="writer">
-					<?php foreach ( $this->data['formats'] as $writer => $name ) { ?>
+					<?php foreach ( $this->data['formats'] as $writer => $name ) { 
+                    if ($writer != "epub" && $writer != "docbook") {?>
 					<option value="<?php echo htmlspecialchars( $writer ) ?>"><?php echo wfMessage( 'coll-format-' . $writer )->escaped() ?></option>
-					<?php	} ?>
+					<?php	    }
+                } ?>
 				</select>
 			<?php } ?>
 			</td><td id="collection-download-button">

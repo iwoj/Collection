@@ -44,7 +44,7 @@ $wgCollectionVersion = "1.6.1";
 $wgCollectionStyleVersion = 9;
 
 /** URL of mw-serve render server */
-$wgCollectionMWServeURL = 'http://tools.pediapress.com/mw-serve/';
+$wgCollectionMWServeURL = 'http://localhost:8000';
 
 /** Login credentials to this MediaWiki as 'USERNAME:PASSWORD' string */
 $wgCollectionMWServeCredentials = null;
