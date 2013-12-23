@@ -118,7 +118,11 @@ foreach ( $this->data['podpartners'] as $partnerKey => $partnerData ) {
 				<label for="formatSelect"><?php $this->msg( 'coll-format_label' ) ?></label>
 				<select id="formatSelect" name="writer">
 					<?php foreach ( $this->data['formats'] as $writer => $name ) { 
-                    if ($writer != "epub" && $writer != "docbook") {?>
+                    if ($writer != "epub" && $writer != "docbook") {
+						// Give grep a chance to find the usages:
+						// coll-format-rl, coll-format-epub, coll-format-odf,
+						// coll-format-zim, coll-format-docbook, coll-format-okawix_zeno
+					?>
 					<option value="<?php echo htmlspecialchars( $writer ) ?>"><?php echo wfMessage( 'coll-format-' . $writer )->escaped() ?></option>
 					<?php	    }
                 } ?>
@@ -387,13 +391,9 @@ $t = Title::newFromText( $title_string );
 if ( $t && $t->exists() ) {
 	echo wfMessage( 'coll-blacklisted-templates', $title_string )->parseAsBlock();
 }
-if ( $this->data['return_to'] ) {
-	// We are doing this the hard way (i.e. via the HTML detour), to prevent
-	// the parser from replacing [[:Special:Book]] with a selflink.
-	$t = Title::newFromText( $this->data['return_to'] );
-        if ( $t ) {
-                echo wfMessage( 'coll-return_to_collection', $t->getFullURL(), $this->data['return_to'] )->text();
-        }
+$t = Title::newFromText( $this->data['return_to'] );
+if ( $t && $t->isKnown() ) {
+	echo wfMessage( 'coll-return_to', $t )->parseAsBlock();
 }
 
 if ( CollectionSession::isEnabled() ) {

@@ -131,7 +131,6 @@ Maybe it has been deleted and needs to be regenerated.',
 <a href="$1">Force re-rendering.</a></li></ul>',
 	'coll-excluded-templates'         => '* Templates in category [[:Category:$1|$1]] have been excluded.',
 	'coll-blacklisted-templates'      => '* Templates on blacklist [[:$1]] have been excluded.',
-	'coll-return_to_collection'       => '<p>Return to <a href="$1">$2</a></p>',
 	'coll-book_title'                 => 'Order as a printed book',
 	'coll-book_text'                  => 'Get a printed book from our print-on-demand partner.',
 	'coll-order_from_pp'              => 'Preview with $1',
@@ -202,13 +201,14 @@ $messages['qqq'] = array(
 	'coll-template_blacklist_title' => '{{notranslate}}',
 	'coll-print_template_prefix' => 'Prefix added to the templates name if you want to get a special for-print version of the template. So in a page instead of Template:Foo Template:PrintFoo is used if it exists.
 {{Identical|Print}}',
-	'coll-print_template_pattern' => 'Use print templates being subpages of regular templates.
-
-$1 is a placeholder and will be replaced by content during the rendering process.',
+	'coll-print_template_pattern' => 'Use print templates being subpages of regular templates. Parameters:
+* $1 - a placeholder and will be replaced by content during the rendering process',
 	'coll-savedbook_template' => 'This is the name of a template that is inserted at the top of pages for saved collections ([[wikipedia:Template:Saved_book|example]]).',
 	'coll-your_book' => '{{Identical|Books}}',
 	'coll-download_title' => 'Header for the download section on [[Special:Book]].
 {{Identical|Download}}',
+	'coll-download_as_text' => 'Parameters:
+* $1 - format name (e.g. PDF)',
 	'coll-download' => 'Text on download button on [[Special:Book]].
 {{Identical|Download}}',
 	'coll-format_label' => '{{Identical|Format}}',
@@ -219,6 +219,10 @@ $1 is a placeholder and will be replaced by content during the rendering process
 	'coll-rename' => '{{Identical|Rename}}',
 	'coll-post_failed_msg' => '* $1 is a URL.
 * $2 is (probably) an explanation of the error.',
+	'coll-mwserve_failed_msg' => 'Used as error message body. Parameters:
+* $1 - any one of the following information (not server name):
+** invalid JSON string
+** error message which JSON decoder returned',
 	'coll-empty_collection' => 'Translate "empty" as in "an empty book" (adj), not "empty the book" (verb)',
 	'coll-revision' => '{{Identical|Revision}}',
 	'coll-save_collection' => '',
@@ -249,12 +253,25 @@ The variable $1 is another message string, as follows:
 **then the text "rendering" (source message not yet identified)
 
 {{Identical|Status}}',
+	'coll-rendering_article' => 'Parameters:
+* $1 - article name',
+	'coll-rendering_page' => 'Parameters:
+* $1 - page name',
 	'coll-rendering_finished_text' => 'This is the first part of the text of the special page "Rendering finished", which appears after clicking \'download book\' and the book has been generated.  
 
 $1 is not text; it is the http:// address of the book.',
+	'coll-download_failed_title' => 'Unused at this time.
+
+Used as title for the error message {{msg-mw|Coll-download failed text}}.',
+	'coll-download_failed_text' => 'Unused at this time.
+
+Used as error message. Parameters:
+* $1 - filename
+The title for this message is {{msg-mw|Coll-download failed title}}.',
+	'coll-is_cached' => 'Parameters:
+* $1 - URL of Special:Book?bookcmd=forcerender',
 	'coll-excluded-templates' => "Part of the text of the special page 'Rendering finished' which appears after clicking on 'Download' and a book has been generated.",
 	'coll-blacklisted-templates' => "Part of the text of the special page 'Rendering finished' which appears after clicking on 'Download' and a book has been generated.",
-	'coll-return_to_collection' => 'Part of the text of the special page \'Rendering finished\' which appears after clicking on \'Download\' and a book has been generated. <nowiki><a href="$1">$2</a></nowiki> does not need translating. It is a wiki link back to the "[[Special:Book]]" page.',
 	'coll-order_from_pp' => '* $1 is the name of a print provider (a company name)',
 	'coll-about_pp' => '{{Identical|About}}',
 	'coll-invalid_podpartner_title' => 'POD means print-on-demand',
@@ -269,8 +286,14 @@ The contents of this page appear in the "Order as a printed book" box on <nowiki
 	'coll-suggest_reset_bans' => '{{Identical|Reset}}',
 	'coll-suggest_your_book' => '{{Identical|Book}}',
 	'coll-suggest_show' => '{{Identical|Show}}',
+	'coll-suggest_article_ban' => 'Message shown when the user chose to remove a suggested page from the suggestions. Parameters:
+* $1 - the title of the removed page
+* $2 - a link captioned {{msg-mw|coll-suggest_undo}}',
 	'coll-suggest_article_add' => 'Message shown when the user chose to add a suggested page to his/her book. Parameters:
 * $1 - the title of the added page
+* $2 - a link captioned {{msg-mw|coll-suggest_undo}}',
+	'coll-suggest_article_remove' => 'Message shown when the user chose to remove a suggested page from his/her book. Parameters:
+* $1 - the title of the removed page
 * $2 - a link captioned {{msg-mw|coll-suggest_undo}}',
 	'coll-suggest_undo_tooltip' => '{{Identical|Undo}}',
 	'coll-suggest_undo' => '{{Identical|Undo}}',
@@ -1248,8 +1271,29 @@ $messages['as'] = array(
  */
 $messages['ast'] = array(
 	'coll-desc' => '[[Special:Book|Crear llibros]]',
+	'coll-book_creator_intro' => "<big>Col ''creador de llibros'' pue crear un llibru que contenga les páxines wiki que prefiera. Pue esportar el llibru en diferentes formatos (por exemplu PDF o ODF) o pidir una copia impresa.</big>",
+	'coll-manage_your_book' => 'Xestionar el so llibru',
+	'coll-book_creator_help' => "Ver [[{{MediaWiki:Coll-helppage}}|la páxina d'ayuda sobro llibros]] pa más información.",
+	'coll-start_book_creator' => 'Aniciar el creador de llibros',
+	'coll-book_creator_continue' => "Siguir usando'l creador de llibros",
+	'coll-book_creator_disable_text' => "Desactivarase'l ''creador de llibros'' y desaniciarase'l llibru nel que ta trabayando.",
+	'coll-book_creator_text_article' => '{{MediaWiki:Coll-helppage}}/Testu del creador de llibros',
 	'coll-collection' => 'Llibru',
 	'coll-collections' => 'Llibros',
+	'coll-exclusion_category_title' => 'Escluir na impresión',
+	'coll-print_template_prefix' => 'Imprentar',
+	'coll-print_template_pattern' => '$1/Imprentar',
+	'coll-unknown_subpage_title' => 'Subpáxina desconocida',
+	'coll-unknown_subpage_text' => 'Esta subpáxina del [[Special:Book|llibru]] nun esiste',
+	'coll-couldnotaddarticle_title' => 'Nun se pudo amestar la páxina wiki',
+	'coll-couldnotaddarticle_msg' => 'La páxina wiki nun se pudo amestar.',
+	'coll-couldnotremovearticle_title' => 'Nun se pudo desaniciar la páxina wiki',
+	'coll-couldnotremovearticle_msg' => 'La páxina wiki nun se pudo desaniciar.',
+	'coll-noscript_text' => "<h1>¡Necesitase JavaScript!</h1>
+<strong>El so navegador nun almite JavaScript o tienlu desactiváu.
+Esta páxina nun funcionará correutamente si nun s'activa JavaScript.</strong>",
+	'coll-savedbook_template' => 'llibru_guardáu',
+	'coll-your_book' => 'El so llibru',
 	'coll-download_title' => 'Descargar',
 	'coll-download_text' => 'Pa descargar el llibru, escueyi un formatu y calca nel botón.',
 	'coll-download_as_text' => 'Pa descargar el llibru en formatu $1 calca nel botón.',
@@ -1264,14 +1308,38 @@ $messages['ast'] = array(
 	'coll-title' => 'Títulu:',
 	'coll-subtitle' => 'Subtítulu:',
 	'coll-contents' => 'Conteníu',
+	'coll-drag_and_drop' => 'Use abasnar y asitiar pa reordenar páxines wiki y capítulos',
 	'coll-create_chapter' => 'Crear un capítulu',
 	'coll-sort_alphabetically' => 'Ordenar alfabéticamente',
 	'coll-rename' => 'Renomar',
 	'coll-new_chapter' => "Escribi'l nome del nuevu capítulu",
 	'coll-rename_chapter' => "Escribi'l nuevu nome del capítulu",
+	'coll-no_such_category' => 'Nun existe esa categoría',
+	'coll-notitle_title' => "Nun pudo determinase'l títulu de la páxina.",
+	'coll-post_failed_title' => 'Falló la solicitú POST',
+	'coll-post_failed_msg' => 'Falló la solicitú POST a $1 ($2).',
+	'coll-mwserve_failed_title' => 'Fallu del sirvidor de renderización',
+	'coll-mwserve_failed_msg' => 'Hebo un error nel sirvidor de renderización: <nowiki>$1</nowiki>',
+	'coll-error_reponse' => "Respuesta d'error del sirvidor",
+	'coll-empty_collection' => 'Llibru baleru',
+	'coll-revision' => 'Revisión: $1',
+	'coll-save_collection_title' => 'Guardar y compartir el so llibru',
+	'coll-save_collection_text' => 'Escueya un llugar pa guardar el so llibru:',
+	'coll-login_to_save' => 'Si quier guardar llibros pa usalos más sero, por favor, [[Special:UserLogin|anicie sesión o cree una cuenta]].',
+	'coll-personal_collection_label' => 'Llibru personal:',
+	'coll-community_collection_label' => 'Llibru de la comunidá:',
+	'coll-save_collection' => 'Guardar llibru',
 	'coll-yes' => 'Sí',
 	'coll-no' => 'Non',
 	'coll-about_pp' => 'Tocante a $1',
+	'coll-format-rl' => 'e-book (PDF)',
+	'coll-format-epub' => 'e-book (EPUB)',
+	'coll-format-odf' => 'procesador de testu (OpenDocument)',
+	'coll-format-zim' => 'Kiwix (OpenZIM)',
+	'coll-format-docbook' => 'DocBook',
+	'coll-format-okawix_zeno' => 'Okawix',
+	'right-collectionsaveasuserpage' => "Guardar los llibros como páxina d'usuariu",
+	'right-collectionsaveascommunitypage' => 'Guardar los llibros como páxina de la comunidá',
 );
 
 /** Azerbaijani (azərbaycanca)
@@ -6075,11 +6143,10 @@ stranicu za pomoć o zbirkama]] za mogućnosti njegovog poboljšanja.',
 	'coll-download_notfound_text' => 'Datoteka koju pokušavate preuzeti ne postoji: možda je obrisana i treba biti obnovljena.',
 	'coll-download_failed_title' => 'Pogreška tijekom preuzimanja',
 	'coll-download_failed_text' => 'Došlo je do pogreške pri preuzimanju datoteke: $1',
-	'coll-is_cached' => '<ul><li>Pronađena je verzija datoteke u pričuvnoj memoriji, stoga izvođenje datoteke nije potrebno.
+	'coll-is_cached' => '<ul><li>Pronađena je inačica datoteke u pričuvnoj memoriji, stoga izvođenje datoteke nije potrebno.
 <a href="$1">Zahtijevaj ponovno izvođenje.</a></li></ul>',
 	'coll-excluded-templates' => '* Predlošci u kategoriji [[:Category:$1|$1]] su ostali isključeni.',
 	'coll-blacklisted-templates' => '* Predlošci na crnoj listi [[:$1]] su ostali isključeni.',
-	'coll-return_to_collection' => '<p>Vrati se na <a href="$1">$2</a></p>',
 	'coll-book_title' => 'Naručite kao ispisanu zbirku',
 	'coll-book_text' => 'Naručiti ispisanu zbirku od sljedećih partnera za ispisivanje na zahtjev (POD):',
 	'coll-order_from_pp' => 'Pregledaj s $1',
@@ -8545,6 +8612,11 @@ $messages['ku-latn'] = array(
 	'coll-your_book' => 'Pirtûka te',
 	'coll-show' => 'Nîşan bide',
 	'coll-title' => 'Sernav:',
+	'coll-contents' => 'Naverok',
+	'coll-save_collection' => 'Pirtûkê tomar bike',
+	'coll-yes' => 'Erê',
+	'coll-no' => 'Na',
+	'coll-notfound_title' => 'Pirtûk nehat dîtin',
 	'coll-suggest_your_book' => 'Pirtûka te',
 );
 
@@ -10901,7 +10973,7 @@ $messages['or'] = array(
 	'coll-move_to_bottom' => 'ତଳକୁ ଘୁଞ୍ଚାଇବେ',
 	'coll-title' => 'ଶିରୋନାମା:',
 	'coll-subtitle' => 'ଉପନାମ:',
-	'coll-contents' => 'ଭିତର ଚିଜ',
+	'coll-contents' => 'ବିଷୟସୂଚୀ',
 	'coll-drag_and_drop' => 'ଡ୍ରାଗ ଆଣ୍ଡ ଡ୍ରପ ବ୍ୟବହାର କରି ଉଇକି ପୃଷ୍ଠାଗୁଡିକୁ ଏବଂ ବିଷୟଗୁଡିକୁ ସଜେଇ ରଖନ୍ତୁ',
 	'coll-create_chapter' => 'ବିଭାଗ ତିଆରିବେ',
 	'coll-sort_alphabetically' => 'ଅକ୍ଷରର କ୍ରମ ଅନୁସାରେ ସଜାଇବେ',
@@ -10967,7 +11039,6 @@ $messages['or'] = array(
 <a href="$1">Force re-rendering.</a></li></ul>',
 	'coll-excluded-templates' => '* [[:Category:$1|$1]] ବିଭାଗରେ ଥିବା ଟେମ୍ପଲେଟ ଗୁଡିକୁ ବାଦ ଦିଆଗଲା ।',
 	'coll-blacklisted-templates' => '* ବନ୍ଦ କରାଯାଇଥିବା ଥିବା ଟେମ୍ପଲେଟ [[:$1]] ଗୁଡିକୁ ବାଦ ଦିଆଗଲା ।',
-	'coll-return_to_collection' => '<p><a href="$1">$2</a>କୁ ଫେରିଯାଆନ୍ତୁ</p>',
 	'coll-book_title' => 'ବହିଟିକୁ ଛାପିବା ପାଇଁ ନିର୍ଦେଶ ଦେବେ',
 	'coll-book_text' => 'ଆମ ପ୍ରିଣ୍ଟ-ଅନ-ଡିମାଣ୍ଡ ସହଯୋଗୀଦ୍ଵାରା ଏକ ଛପା ବହି ନିଅନ୍ତୁ ।',
 	'coll-order_from_pp' => '$1 ସହ ଦେଖଣା',
@@ -14896,6 +14967,30 @@ $messages['tt-cyrl'] = array(
 	'coll-suggest_undo' => 'үткәрмәү',
 );
 
+/** Tuvinian (тыва дыл)
+ * @author Agilight
+ */
+$messages['tyv'] = array(
+	'coll-empty_collection' => 'Куруг ном',
+	'coll-yes' => 'Ийе',
+	'coll-no' => 'Чок',
+	'coll-overwrite' => 'Кырынче бижиир',
+	'coll-cancel' => 'Ойталаар',
+	'coll-rendering_status' => '<strong>Деңнел:</strong> $1',
+	'coll-rendering_article' => '(чүүл: $1)',
+	'coll-rendering_page' => '(арын: $1)',
+	'coll-about_pp' => '$1 дугайты',
+	'coll-license' => 'Лицензия',
+	'coll-suggest_your_book' => 'Номуңар',
+	'coll-suggest_undo' => 'чөрчүүр',
+	'coll-format-rl' => 'е-ном (PDF)',
+	'coll-format-epub' => 'е-ном (EPUB)',
+	'coll-format-odf' => 'сөзүглелдиг процессор (OpenDocument)',
+	'coll-format-zim' => 'Kiwix (OpenZIM)',
+	'coll-format-docbook' => 'DocBook',
+	'coll-format-okawix_zeno' => 'Okawix',
+);
+
 /** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
  * @author Tifinaghes
  */
@@ -15456,8 +15551,8 @@ $messages['vi'] = array(
 	'coll-exclusion_category_title' => 'Ẩn khi in',
 	'coll-print_template_prefix' => 'In',
 	'coll-print_template_pattern' => '$1/In',
-	'coll-unknown_subpage_title' => 'Trang phụ không tìm được',
-	'coll-unknown_subpage_text' => 'Trang phụ này của [[Special:Book|Sách]] không tồn tại',
+	'coll-unknown_subpage_title' => 'Trang con không tìm được',
+	'coll-unknown_subpage_text' => 'Trang con của [[Special:Book|Sách]] với tên này không tồn tại',
 	'coll-couldnotaddarticle_title' => 'Không thể thêm trang wiki',
 	'coll-couldnotaddarticle_msg' => 'Không thêm được trang wiki.',
 	'coll-couldnotremovearticle_title' => 'Không thể bỏ trang wiki',
@@ -15547,7 +15642,6 @@ Chú ý:
 	'coll-is_cached' => '<ul><li>Không cần kết xuất mới vì đã tìm thấy phiên bản trong bộ nhớ. <a href="$1">Kết xuất lại.</a></li></ul>',
 	'coll-excluded-templates' => '* Các bản mẫu trong thể loại [[:Category:$1|$1]] được bỏ qua.',
 	'coll-blacklisted-templates' => '* Các bản mẫu trùng với danh sách đen [[:$1]] được bỏ qua.',
-	'coll-return_to_collection' => '<p>Quay trở về <a href="$1">$2</a></p>',
 	'coll-book_title' => 'Đặt sách in',
 	'coll-book_text' => 'Mua một cuốn sách in từ bên cộng tác in-theo-yêu-cầu:',
 	'coll-order_from_pp' => 'Xem trước dùng $1',
@@ -15685,7 +15779,7 @@ $messages['yi'] = array(
 	'coll-revision' => 'רעוויזיע: $1',
 	'coll-yes' => 'יא',
 	'coll-no' => 'ניין',
-	'coll-cancel' => 'מבטל זײַן',
+	'coll-cancel' => 'אַנולירן',
 	'coll-update' => 'דערהײַנטיקן',
 	'coll-rendering_status' => '<strong>סטאַטוס:</strong> $1',
 	'coll-rendering_article' => '(וויקי בלאַט: $1)',
