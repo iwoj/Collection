@@ -118,7 +118,7 @@ foreach ( $this->data['podpartners'] as $partnerKey => $partnerData ) {
 				<label for="formatSelect"><?php $this->msg( 'coll-format_label' ) ?></label>
 				<select id="formatSelect" name="writer">
 					<?php foreach ( $this->data['formats'] as $writer => $name ) { 
-                    if ($writer != "epub" && $writer != "docbook") {
+                    if ($writer != "docbook") {
 						// Give grep a chance to find the usages:
 						// coll-format-rl, coll-format-epub, coll-format-odf,
 						// coll-format-zim, coll-format-docbook, coll-format-okawix_zeno
