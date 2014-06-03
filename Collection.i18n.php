@@ -162,7 +162,7 @@ The list is updated whenever you click on the add or remove buttons.',
 
 	# Some formats used by Wikimedia
 	'coll-format-rl'           => 'PDF',
-	'coll-format-epub'         => 'e-book (EPUB)',
+	'coll-format-epub'         => 'ebook (EPUB)',
 	'coll-format-odf'          => 'word processor',
 	'coll-format-zim'          => 'Kiwix (OpenZIM)',
 	'coll-format-docbook'      => 'DocBook',
